@@ -1,0 +1,30 @@
+.env
+# Виртуальные окружения
+.venv/
+venv/
+env/
+
+# Кэш Python
+__pycache__/
+*.pyc
+
+# Логи
+*.log
+
+# Настройки IDE/редакторов
+.idea/
+.vscode/
+*.code-workspace
+
+# Сборки / артефакты
+build/
+dist/
+*.egg-info/
+
+# Jupyter checkpoint'ы
+.ipynb_checkpoints/
+
+# Файлы ОС
+.DS_Store
+Thumbs.db
+.DS_Store
