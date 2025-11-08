@@ -25,7 +25,7 @@ async def handle_start(message: Message, config: Config, db: Database) -> None:
     channels = ", ".join(config.required_channels) if config.required_channels else "—"
     await message.answer(
         "Привет, отправь мне поисковые запросы через запятую или точку, и я пришлю товары с первой страницы Prom.ua.\n"
-        "Пример: Чехол для Iphone 17 pro, Чехол для Айфон 17 про.\n"
+        "Пример: Чехол для Iphone 17 pro, Чехол Samsung Galaxy S25.\n"
         f"Ограничение: {config.daily_query_limit} запросов в сутки.\n"
         f"Обязательные каналы: {channels}"
     )
