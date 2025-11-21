@@ -21,7 +21,6 @@ async def _setup_bot_commands(bot: Bot) -> None:
     commands = [
         BotCommand(command="start", description="Начать работу"),
         BotCommand(command="help", description="Правила использования"),
-        BotCommand(command="contacts", description="Контакты разработчика"),
         BotCommand(command="services", description="Услуги и продвижение"),
     ]
     await bot.set_my_commands(commands)

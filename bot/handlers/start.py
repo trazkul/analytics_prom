@@ -14,8 +14,7 @@ HELP_TEXT = (
     "Как пользоваться ботом:\n"
     "• Отправьте одно или несколько поисковых выражений через запятую или точку.\n"
     "• Бот соберёт товары с первой страницы Prom.ua и пришлёт Excel.\n"
-    "• Лимит — {limit} запросов в сутки. Повторные запросы тоже учитываются.\n\n"
-    "Если возникают вопросы — используйте команду /contacts."
+    "• Лимит — {limit} запросов в сутки. Повторные запросы тоже учитываются."
 )
 
 
@@ -34,12 +33,6 @@ async def handle_start(message: Message, config: Config, db: Database) -> None:
 @router.message(Command("help"))
 async def handle_help(message: Message, config: Config) -> None:
     await message.answer(HELP_TEXT.format(limit=config.daily_query_limit))
-
-
-@router.message(Command("contacts"))
-async def handle_contacts(message: Message, config: Config) -> None:
-    contact = config.developer_contact_url or "https://t.me/your_username"
-    await message.answer(f"Контакты разработчика: {contact}")
 
 
 @router.message(Command("services"))
