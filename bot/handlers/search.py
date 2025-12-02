@@ -38,19 +38,24 @@ async def handle_search(
 
     await ensure_user(db, message.from_user)
 
-    missing_channels = await check_subscription(message.bot, message.from_user.id, config.required_channels)
+    missing_channels = await check_subscription(
+        message.bot, message.from_user.id, config.required_channels
+    )
     if missing_channels:
         channels_list = ", ".join(missing_channels)
         await message.answer(
-            "Подпишитесь на обязательные каналы, чтобы пользоваться ботом:\n" f"{channels_list}"
+            "Подпишитесь на обязательные каналы, чтобы пользоваться ботом:\n"
+            f"{channels_list}"
         )
         return
 
-    limit_status = await check_limit(db, message.from_user.id, config.daily_query_limit, len(queries))
+    limit_status = await check_limit(
+        db, message.from_user.id, config.daily_query_limit, len(queries)
+    )
     if limit_status.remaining <= 0:
         contact = config.order_parser_url or "@mashulia_prom"
         await message.answer(
-            "Дневной лимит запросов исчерпан. Оформите безлимит за $20/мес — "
+            "Дневной лимит запросов исчерпан. Оформите безлимит за $20/30 дней — "
             f"пишите в Telegram: {contact}. Иначе попробуйте снова завтра."
         )
         return
