@@ -48,8 +48,10 @@ async def handle_search(
 
     limit_status = await check_limit(db, message.from_user.id, config.daily_query_limit, len(queries))
     if limit_status.remaining <= 0:
+        contact = config.order_parser_url or "@mashulia_prom"
         await message.answer(
-            "Вы исчерпали дневной лимит запросов. Попробуйте снова завтра."
+            "Дневной лимит запросов исчерпан. Оформите безлимит за $20/мес — "
+            f"пишите в Telegram: {contact}. Иначе попробуйте снова завтра."
         )
         return
 
